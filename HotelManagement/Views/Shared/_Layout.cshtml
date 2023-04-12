@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+        <style>
+            body {
+                background-image: url('../../content/image/image4.jpg');
+                height: 100%;
+                width: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+               
+                background-repeat: repeat-y;
+            }
+
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+            a:link {
+                color: green;
+                background-color: transparent;
+                text-decoration: none;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                border-radius
+            }
+
+            a:visited {
+                color: red;
+                background-color: transparent;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: hotpink;
+                background-color: pink;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                border-radius: 10px 10px 10px 0px;
+            }
+
+            a:active {
+                color: yellow;
+                background-color: transparent;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+            }
+            img:hover{
+                height:100px;
+                width:100px;
+                border-block-color:brown;
+            }
+            button {
+                border-radius: 10px 10px 10px 0px;
+            }
+            table, td {
+                border: 2px solid black;
+                border-collapse: collapse;
+             
+                background-color:burlywood;
+                color:darkcyan
+            }
+            th{
+                border: 2px solid black;
+                border-collapse: collapse;
+               
+                background-color:cornflowerblue;
+                color:midnightblue
+            }  
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    @* First step Add navbar*@
+
+                    <font style="font-family:'Times New Roman', Times, serif;font-size:larger;font-stretch:expanded">
+                        <H1>
+                            <img src="~/Content/image/hotel_logo.png" height="80px" width="80px" style="border-radius:100%;" />
+
+                            <font size="100px">  @Html.ActionLink("Welcome To Royal Grand Hotel", "Index", "Homee")
+                        </H1>
+                    </font>
+                    <button type="button" style="border-radius: 10px 10px 10px 0px;">   @Html.ActionLink("Home", "Index", "Homee")</button>
+                    <button type="button" style="border-radius: 10px 10px 10px 0px;">  @Html.ActionLink("Receptionist", "IndexReceptionist", "Login")</button>
+                    <button type="button" style="border-radius: 10px 10px 10px 0px;">  @Html.ActionLink("Manager", "IndexManager", "Login")</button>
+                    <button type="button" style="border-radius: 10px 10px 10px 0px;">  @Html.ActionLink("Owner", "IndexOwner", "Login")</button>
+                    <button type="button" style="border-radius: 10px 10px 10px 0px;">  @Html.ActionLink("Email-Notification", "Index", "SMTP")</button>
+                    </font>
+                </div>
+                <div class="navbar-collapse collapse">
+
+
+                    <ul class="nav navbar-nav">
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
+    </html>
+
+

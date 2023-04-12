@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HotelManagement.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b> <h2>Reservation</h2></b>
+
+    <p>
+        @Html.ActionLink("Make Reservation", "Create")
+    </p>
+    <table class="table">
+        <tr style="background-color:cornsilk">
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Of_Adults)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Of_Childs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckIN_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOUT_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest.Guest_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RECEPTIONIST.Employee_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ROOM.Room_Type)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_Of_Adults)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_Of_Childs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIN_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOUT_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.Guest_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RECEPTIONIST.Employee_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ROOM.Room_Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Reservation_ID }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Reservation_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back", "IndexReceptionist", "DASHBOARD")

@@ -1,0 +1,29 @@
+﻿
+    @{
+        ViewBag.Title = "Manager";
+    }
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b> <h2>Manager</h2></b>
+    
+
+        @{
+            ViewBag.Title = "IndexManager";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+       
+        @{
+            ViewBag.Title = "IndexManager";
+        }
+        @Html.Raw(TempData["LoginSuccessMessage"])
+        
+        <h3> Welcome @Session["Staff_name"]</h3>
+        <p><h3>
+    <button><li>@Html.ActionLink("Receptionist", "Index", "Receptionist")</li></button>
+    <button> <li>  @Html.ActionLink("Room", "Index", "Room") </li></button>
+    <button><li>  @Html.ActionLink("Logout", "LogoutManager", "Dashboard") </li></button>
+    <button> <li>@Html.ActionLink("BACK", "LogoutReceptionist", "DASHBOARD")</li></button>
+</h3>
+        </p>
+ 
+
+    </font>

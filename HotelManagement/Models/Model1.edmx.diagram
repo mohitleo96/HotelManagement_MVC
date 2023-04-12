@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a21b3e63e2d04b0d85d4660ae407be72" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="HotelManagementDBModel.sysdiagram" PointX="0.75" PointY="0.75" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.MANAGER" PointX="9" PointY="7.5" Width="1.5" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.OWNER" PointX="0.875" PointY="3.5" Width="1.5" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.RECEPTIONIST" Width="1.5" PointX="8.25" PointY="3.5" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.ROLEE" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.STAFF" Width="1.5" PointX="9.125" PointY="11.375" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_ROLEE_STAFF" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.DEPARTMENT" Width="1.5" PointX="3.375" PointY="3.875" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.Guest" Width="1.5" PointX="6" PointY="7.5" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_DEPARTMENT_OWNER" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.INVENTORY" Width="1.5" PointX="11.625" PointY="14.5" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_INVENTORY_MANAGER" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.SearchRoomViewModel" Width="1.5" PointX="4.75" PointY="0.625" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.Reservation" Width="1.5" PointX="10.5" PointY="2.625" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_Reservation_Guest" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_Reservation_RECEPTIONIST" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.ROOM" Width="1.5" PointX="8.125" PointY="1.125" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_Reservation_ROOM" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_SearchRoomViewModel_ROOM" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.BILL" Width="1.5" PointX="12.75" PointY="3.25" />
+        <AssociationConnector Association="HotelManagementDBModel.FK_BILL_Reservation" />
+        <EntityTypeShape EntityType="HotelManagementDBModel.SMTP" Width="1.5" PointX="5.25" PointY="4.125" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

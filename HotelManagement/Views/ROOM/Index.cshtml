@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HotelManagement.Models.ROOM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b> <h2>Room</h2></b>
+
+    <p>
+        @Html.ActionLink("Create New Room Collection", "Create")
+    </p>
+
+    <table class="table" border="2">
+        <tr style="background-color:cornsilk">
+            <th>
+                @Html.DisplayNameFor(Model => Model.Room_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room_Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room_Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room_Rate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room_Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Room_ID }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Room_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back", "IndexReceptionist", "DASHBOARD")

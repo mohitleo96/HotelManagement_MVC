@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="Billing_Number" />
+    </Key>
+    <Property Name="Billing_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Transaction_Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="int" />
+    <Property Name="Reservation_ID" Type="int" Nullable="false" />
+    <Property Name="Total_Bill" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="Department_ID" />
+    </Key>
+    <Property Name="Department_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Department_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Owner_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="Guest_ID" />
+    </Key>
+    <Property Name="Guest_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guest_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guest_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guest_Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guest_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Guest_Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INVENTORY">
+    <Key>
+      <PropertyRef Name="Invertory_ID" />
+    </Key>
+    <Property Name="Invertory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Item" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Manager_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MANAGER">
+    <Key>
+      <PropertyRef Name="Mana_ID" />
+    </Key>
+    <Property Name="Mana_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Employee_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Date_Of_Joining" Type="date" Nullable="false" />
+    <Property Name="Salary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OWNER">
+    <Key>
+      <PropertyRef Name="Own_ID" />
+    </Key>
+    <Property Name="Own_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mail_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RECEPTIONIST">
+    <Key>
+      <PropertyRef Name="Recp_ID" />
+    </Key>
+    <Property Name="Recp_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Employee_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Date_Of_Joining" Type="date" Nullable="false" />
+    <Property Name="Salary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="Reservation_ID" />
+    </Key>
+    <Property Name="Reservation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Of_Adults" Type="int" Nullable="false" />
+    <Property Name="No_Of_Childs" Type="int" />
+    <Property Name="CheckIN_Date" Type="datetime" />
+    <Property Name="CheckOUT_Date" Type="datetime" Nullable="false" />
+    <Property Name="Room_ID" Type="int" Nullable="false" />
+    <Property Name="Receptionist_ID" Type="int" Nullable="false" />
+    <Property Name="Guest_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLEE">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Role" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+    </Key>
+    <Property Name="Room_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Room_Rate" Type="decimal" Precision="30" Scale="3" Nullable="false" />
+    <Property Name="Room_Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HotelManagementDB.dbo.SearchRoomViewModel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SearchRoomViewModel">
+    <Key>
+      <PropertyRef Name="DateFrom" />
+      <PropertyRef Name="DateTo" />
+      <PropertyRef Name="NoOfAdults" />
+      <PropertyRef Name="NoOfChilds" />
+      <PropertyRef Name="Room" />
+    </Key>
+    <Property Name="DateFrom" Type="datetime" Nullable="false" />
+    <Property Name="DateTo" Type="datetime" Nullable="false" />
+    <Property Name="NoOfAdults" Type="int" Nullable="false" />
+    <Property Name="NoOfChilds" Type="int" Nullable="false" />
+    <Property Name="Room" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HotelManagementDB.dbo.SMTP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SMTP">
+    <Key>
+      <PropertyRef Name="To" />
+      <PropertyRef Name="From" />
+      <PropertyRef Name="Subject" />
+    </Key>
+    <Property Name="To" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="From" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Body" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Employee_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Date_Of_Joining" Type="date" Nullable="false" />
+    <Property Name="Salary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Dept_ID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_BILL_Reservation">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="Reservation_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="Reservation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DEPARTMENT_OWNER">
+    <End Role="OWNER" Type="Self.OWNER" Multiplicity="0..1" />
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OWNER">
+        <PropertyRef Name="Own_ID" />
+      </Principal>
+      <Dependent Role="DEPARTMENT">
+        <PropertyRef Name="Owner_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INVENTORY_MANAGER">
+    <End Role="MANAGER" Type="Self.MANAGER" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANAGER">
+        <PropertyRef Name="Mana_ID" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="Manager_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Guest">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="Guest_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Guest_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_RECEPTIONIST">
+    <End Role="RECEPTIONIST" Type="Self.RECEPTIONIST" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECEPTIONIST">
+        <PropertyRef Name="Recp_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Receptionist_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_ROOM">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Room_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLEE_STAFF">
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+    <End Role="ROLEE" Type="Self.ROLEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ROLEE">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SearchRoomViewModel_ROOM">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="SearchRoomViewModel" Type="Self.SearchRoomViewModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="SearchRoomViewModel">
+        <PropertyRef Name="Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelManagementDBModelStoreContainer">
+    <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MANAGER" EntityType="Self.MANAGER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OWNER" EntityType="Self.OWNER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECEPTIONIST" EntityType="Self.RECEPTIONIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLEE" EntityType="Self.ROLEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SearchRoomViewModel" EntityType="Self.SearchRoomViewModel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SearchRoomViewModel].[DateFrom] AS [DateFrom], 
+    [SearchRoomViewModel].[DateTo] AS [DateTo], 
+    [SearchRoomViewModel].[NoOfAdults] AS [NoOfAdults], 
+    [SearchRoomViewModel].[NoOfChilds] AS [NoOfChilds], 
+    [SearchRoomViewModel].[Room] AS [Room]
+    FROM [dbo].[SearchRoomViewModel] AS [SearchRoomViewModel]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SMTP" EntityType="Self.SMTP" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SMTP].[To] AS [To], 
+    [SMTP].[From] AS [From], 
+    [SMTP].[Subject] AS [Subject], 
+    [SMTP].[Body] AS [Body]
+    FROM [dbo].[SMTP] AS [SMTP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BILL_Reservation" Association="Self.FK_BILL_Reservation">
+      <End Role="Reservation" EntitySet="Reservation" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DEPARTMENT_OWNER" Association="Self.FK_DEPARTMENT_OWNER">
+      <End Role="OWNER" EntitySet="OWNER" />
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INVENTORY_MANAGER" Association="Self.FK_INVENTORY_MANAGER">
+      <End Role="MANAGER" EntitySet="MANAGER" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Guest" Association="Self.FK_Reservation_Guest">
+      <End Role="Guest" EntitySet="Guest" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_RECEPTIONIST" Association="Self.FK_Reservation_RECEPTIONIST">
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONIST" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_ROOM" Association="Self.FK_Reservation_ROOM">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLEE_STAFF" Association="Self.FK_ROLEE_STAFF">
+      <End Role="STAFF" EntitySet="STAFF" />
+      <End Role="ROLEE" EntitySet="ROLEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SearchRoomViewModel_ROOM" Association="Self.FK_SearchRoomViewModel_ROOM">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="SearchRoomViewModel" EntitySet="SearchRoomViewModel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

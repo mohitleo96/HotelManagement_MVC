@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="principal_id" Nullable="false" Type="Int32" />
+    <Property Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
+  </EntityType>
+  <EntityContainer Name="HotelManagementDBEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="MANAGERs" EntityType="HotelManagementDBModel.MANAGER" />
+    <EntitySet Name="OWNERs" EntityType="HotelManagementDBModel.OWNER" />
+    <EntitySet Name="RECEPTIONISTs" EntityType="HotelManagementDBModel.RECEPTIONIST" />
+    <EntitySet Name="ROLEEs" EntityType="HotelManagementDBModel.ROLEE" />
+    <EntitySet Name="STAFFs" EntityType="HotelManagementDBModel.STAFF" />
+    <AssociationSet Name="FK_ROLEE_STAFF" Association="HotelManagementDBModel.FK_ROLEE_STAFF">
+      <End Role="STAFF" EntitySet="STAFFs" />
+      <End Role="ROLEE" EntitySet="ROLEEs" />
+    </AssociationSet>
+    <EntitySet Name="DEPARTMENTs" EntityType="HotelManagementDBModel.DEPARTMENT" />
+    <EntitySet Name="Guests" EntityType="HotelManagementDBModel.Guest" />
+    <AssociationSet Name="FK_DEPARTMENT_OWNER" Association="HotelManagementDBModel.FK_DEPARTMENT_OWNER">
+      <End Role="OWNER" EntitySet="OWNERs" />
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+    </AssociationSet>
+    <EntitySet Name="INVENTORies" EntityType="HotelManagementDBModel.INVENTORY" />
+    <AssociationSet Name="FK_INVENTORY_MANAGER" Association="HotelManagementDBModel.FK_INVENTORY_MANAGER">
+      <End Role="MANAGER" EntitySet="MANAGERs" />
+      <End Role="INVENTORY" EntitySet="INVENTORies" />
+    </AssociationSet>
+    <EntitySet Name="SearchRoomViewModels" EntityType="HotelManagementDBModel.SearchRoomViewModel" />
+    <EntitySet Name="Reservations" EntityType="HotelManagementDBModel.Reservation" />
+    <AssociationSet Name="FK_Reservation_Guest" Association="HotelManagementDBModel.FK_Reservation_Guest">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_RECEPTIONIST" Association="HotelManagementDBModel.FK_Reservation_RECEPTIONIST">
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONISTs" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <EntitySet Name="ROOMs" EntityType="HotelManagementDBModel.ROOM" />
+    <AssociationSet Name="FK_Reservation_ROOM" Association="HotelManagementDBModel.FK_Reservation_ROOM">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SearchRoomViewModel_ROOM" Association="HotelManagementDBModel.FK_SearchRoomViewModel_ROOM">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="SearchRoomViewModel" EntitySet="SearchRoomViewModels" />
+    </AssociationSet>
+    <EntitySet Name="BILLs" EntityType="HotelManagementDBModel.BILL" />
+    <AssociationSet Name="FK_BILL_Reservation" Association="HotelManagementDBModel.FK_BILL_Reservation">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <EntitySet Name="SMTPs" EntityType="HotelManagementDBModel.SMTP" />
+  </EntityContainer>
+  <EntityType Name="MANAGER">
+    <Key>
+      <PropertyRef Name="Mana_ID" />
+    </Key>
+    <Property Name="Mana_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="Employee_Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Employee_Address" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Age" Nullable="false" Type="Int32" />
+    <Property Name="Date_Of_Joining" Nullable="false" Precision="0" Type="DateTime" />
+    <Property Name="Salary" Nullable="false" Precision="18" Scale="2" Type="Decimal" />
+    <Property Name="Designation" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Mail_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Password" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <NavigationProperty Name="INVENTORies" Relationship="HotelManagementDBModel.FK_INVENTORY_MANAGER" FromRole="MANAGER" ToRole="INVENTORY" />
+  </EntityType>
+  <EntityType Name="OWNER">
+    <Key>
+      <PropertyRef Name="Own_ID" />
+    </Key>
+    <Property Name="Own_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="Mail_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <NavigationProperty Name="DEPARTMENTs" Relationship="HotelManagementDBModel.FK_DEPARTMENT_OWNER" FromRole="OWNER" ToRole="DEPARTMENT" />
+  </EntityType>
+  <EntityType Name="RECEPTIONIST">
+    <Key>
+      <PropertyRef Name="Recp_ID" />
+    </Key>
+    <Property Name="Recp_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Employee_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Date_Of_Joining" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Salary" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Designation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mail_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reservations" Relationship="HotelManagementDBModel.FK_Reservation_RECEPTIONIST" FromRole="RECEPTIONIST" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="ROLEE">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="STAFF" Relationship="HotelManagementDBModel.FK_ROLEE_STAFF" FromRole="ROLEE" ToRole="STAFF" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Employee_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Date_Of_Joining" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Salary" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Designation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mail_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dept_ID" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ROLEEs" Relationship="HotelManagementDBModel.FK_ROLEE_STAFF" FromRole="STAFF" ToRole="ROLEE" />
+  </EntityType>
+  <Association Name="FK_ROLEE_STAFF">
+    <End Type="HotelManagementDBModel.STAFF" Role="STAFF" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.ROLEE" Role="ROLEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ROLEE">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="Department_ID" />
+    </Key>
+    <Property Name="Department_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Owner_ID" Type="Int32" />
+    <NavigationProperty Name="OWNER" Relationship="HotelManagementDBModel.FK_DEPARTMENT_OWNER" FromRole="DEPARTMENT" ToRole="OWNER" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="Guest_ID" />
+    </Key>
+    <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Guest_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest_Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest_Contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reservations" Relationship="HotelManagementDBModel.FK_Reservation_Guest" FromRole="Guest" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_DEPARTMENT_OWNER">
+    <End Type="HotelManagementDBModel.OWNER" Role="OWNER" Multiplicity="0..1" />
+    <End Type="HotelManagementDBModel.DEPARTMENT" Role="DEPARTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OWNER">
+        <PropertyRef Name="Own_ID" />
+      </Principal>
+      <Dependent Role="DEPARTMENT">
+        <PropertyRef Name="Owner_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="INVENTORY">
+    <Key>
+      <PropertyRef Name="Invertory_ID" />
+    </Key>
+    <Property Name="Invertory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Manager_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MANAGER" Relationship="HotelManagementDBModel.FK_INVENTORY_MANAGER" FromRole="INVENTORY" ToRole="MANAGER" />
+  </EntityType>
+  <Association Name="FK_INVENTORY_MANAGER">
+    <End Type="HotelManagementDBModel.MANAGER" Role="MANAGER" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.INVENTORY" Role="INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANAGER">
+        <PropertyRef Name="Mana_ID" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="Manager_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SearchRoomViewModel">
+    <Key>
+      <PropertyRef Name="DateFrom" />
+      <PropertyRef Name="DateTo" />
+      <PropertyRef Name="NoOfAdults" />
+      <PropertyRef Name="NoOfChilds" />
+      <PropertyRef Name="Room" />
+    </Key>
+    <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NoOfAdults" Type="Int32" Nullable="false" />
+    <Property Name="NoOfChilds" Type="Int32" Nullable="false" />
+    <Property Name="Room" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ROOM1" Relationship="HotelManagementDBModel.FK_SearchRoomViewModel_ROOM" FromRole="SearchRoomViewModel" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="Reservation_ID" />
+    </Key>
+    <Property Name="Reservation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="No_Of_Adults" Type="Int32" Nullable="false" />
+    <Property Name="No_Of_Childs" Type="Int32" />
+    <Property Name="CheckIN_Date" Type="DateTime" Precision="3" />
+    <Property Name="CheckOUT_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Room_ID" Type="Int32" Nullable="false" />
+    <Property Name="Receptionist_ID" Type="Int32" Nullable="false" />
+    <Property Name="Guest_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Guest" Relationship="HotelManagementDBModel.FK_Reservation_Guest" FromRole="Reservation" ToRole="Guest" />
+    <NavigationProperty Name="RECEPTIONIST" Relationship="HotelManagementDBModel.FK_Reservation_RECEPTIONIST" FromRole="Reservation" ToRole="RECEPTIONIST" />
+    <NavigationProperty Name="ROOM" Relationship="HotelManagementDBModel.FK_Reservation_ROOM" FromRole="Reservation" ToRole="ROOM" />
+    <NavigationProperty Name="BILLs" Relationship="HotelManagementDBModel.FK_BILL_Reservation" FromRole="Reservation" ToRole="BILL" />
+  </EntityType>
+  <Association Name="FK_Reservation_Guest">
+    <End Type="HotelManagementDBModel.Guest" Role="Guest" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="Guest_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Guest_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_RECEPTIONIST">
+    <End Type="HotelManagementDBModel.RECEPTIONIST" Role="RECEPTIONIST" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECEPTIONIST">
+        <PropertyRef Name="Recp_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Receptionist_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Room_Rate" Type="Decimal" Nullable="false" Precision="30" Scale="3" />
+    <Property Name="Room_Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reservations" Relationship="HotelManagementDBModel.FK_Reservation_ROOM" FromRole="ROOM" ToRole="Reservation" />
+    <NavigationProperty Name="SearchRoomViewModels" Relationship="HotelManagementDBModel.FK_SearchRoomViewModel_ROOM" FromRole="ROOM" ToRole="SearchRoomViewModel" />
+  </EntityType>
+  <Association Name="FK_Reservation_ROOM">
+    <End Type="HotelManagementDBModel.ROOM" Role="ROOM" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.Reservation" Role="Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Room_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SearchRoomViewModel_ROOM">
+    <End Type="HotelManagementDBModel.ROOM" Role="ROOM" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.SearchRoomViewModel" Role="SearchRoomViewModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="SearchRoomViewModel">
+        <PropertyRef Name="Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="Billing_Number" />
+    </Key>
+    <Property Name="Billing_Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transaction_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="Int32" />
+    <Property Name="Reservation_ID" Type="Int32" Nullable="false" />
+    <Property Name="Total_Bill" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+    <NavigationProperty Name="Reservation" Relationship="HotelManagementDBModel.FK_BILL_Reservation" FromRole="BILL" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_BILL_Reservation">
+    <End Type="HotelManagementDBModel.Reservation" Role="Reservation" Multiplicity="1" />
+    <End Type="HotelManagementDBModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="Reservation_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="Reservation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SMTP">
+    <Key>
+      <PropertyRef Name="To" />
+      <PropertyRef Name="From" />
+      <PropertyRef Name="Subject" />
+    </Key>
+    <Property Name="To" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="From" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

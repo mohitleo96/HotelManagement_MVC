@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HotelManagement.Models.Guest>
+
+@{
+    ViewBag.Title = "Index";
+}
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b>  <h2>Guest List</h2></b>
+
+
+    <p>
+        @Html.ActionLink("ADD_GUEST", "Create")
+
+    </p>
+    <table class="table" style="border:20px">
+        <tr style="background-color:cornsilk">
+            <th>
+                @Html.DisplayNameFor(Model => Model.Guest_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest_Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest_Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guest_Contact)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest_Contact)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Guest_ID }) |
+
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Guest_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back", "IndexReceptionist","DASHBOARD")

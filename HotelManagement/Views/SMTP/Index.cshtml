@@ -1,0 +1,51 @@
+﻿@model HotelManagement.Models.SMTP
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "SMTP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+           
+         
+            <font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+                <b>  <h2>Guest Notification form</h2></b>
+
+                <hr />
+                <table>
+                    <tr>
+                        <td style="width:80px">
+                            To:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.To)</td>
+                    </tr>
+                  
+               
+                    <tr>
+
+                        <td>
+                            <input type="submit" value="Send" />
+                        </td>
+
+                    </tr>
+                </table>
+                <br />
+                <span style="color:blue">@ViewBag.Message</span>
+                </font>
+                }
+</div>
+</body>
+</html>
+
+
+

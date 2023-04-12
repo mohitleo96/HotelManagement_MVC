@@ -1,0 +1,65 @@
+﻿@model HotelManagement.Models.INVENTORY
+
+@{
+    ViewBag.Title = "Delete";
+}
+<font style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:aliceblue;>
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>INVENTORY</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Item)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Manager_ID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Manager_ID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MANAGER.Employee_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MANAGER.Employee_Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>

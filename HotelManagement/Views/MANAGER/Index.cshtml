@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HotelManagement.Models.MANAGER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b><h2>Manager</h2></b>
+
+    <p>
+        @Html.ActionLink("Add_Manager", "Create")
+    </p>
+    <table class="table" border="2">
+        <tr style="background-color:cornsilk">
+            <th>
+                @Html.DisplayNameFor(model => model.Mana_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_Of_Joining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mana_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_Of_Joining)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Mana_ID }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Mana_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back", "IndexOwner", "DASHBOARD")

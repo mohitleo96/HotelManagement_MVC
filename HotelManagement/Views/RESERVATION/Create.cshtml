@@ -1,0 +1,91 @@
+﻿@model HotelManagement.Models.Reservation
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b> <h2>Make_Reservation</h2></b>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.No_Of_Adults, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.No_Of_Adults, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.No_Of_Adults, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.No_Of_Childs, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.No_Of_Childs, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.No_Of_Childs, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CheckIN_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" value="2022-12-24" min="2022-12-23" />
+                    @Html.ValidationMessageFor(model => model.CheckIN_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CheckOUT_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" value="2022-12-24" min="2022-12-23"/>
+                    @Html.ValidationMessageFor(model => model.CheckOUT_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Room_ID, "Room_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Room_ID, ViewBag.room_type as SelectList, "--Select_Room-Type--")
+                    @Html.ValidationMessageFor(model => model.Room_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Receptionist_ID, "Receptionist_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Receptionist_ID, ViewBag.Staff_Name as SelectList, "--Select_Avaialable_Receptionist--")
+                    @Html.ValidationMessageFor(model => model.Receptionist_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Guest_ID, "Guest_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Guest_ID, ViewBag.Guest_Name as SelectList, "--Select_Any_GuestName--")
+                    @Html.ValidationMessageFor(model => model.Guest_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button> <input type="submit" value="BOOK" class="btn btn-default" /></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+
+
+
+

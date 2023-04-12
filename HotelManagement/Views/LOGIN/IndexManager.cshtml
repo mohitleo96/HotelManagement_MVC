@@ -1,0 +1,44 @@
+﻿@model HotelManagement.Models.MANAGER
+
+@{
+    ViewBag.Title = "IndexManager";
+}
+<font style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:red; font-size:large">
+    <h2>Manager</h2>
+    </font>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <font style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:aliceblue; font-size:large">
+        <h4>Login as MANAGER</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+               <button> <input type="submit" value="LOGIN" class="btn btn-default" /></button>
+            </div>
+        </div></font>
+</div>
+    }
+
+<div>
+    @Html.ActionLink("Back", "IndexManager")
+</div>

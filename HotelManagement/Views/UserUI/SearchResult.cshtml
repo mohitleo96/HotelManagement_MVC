@@ -1,0 +1,67 @@
+﻿@model HotelManagement.Models.SearchRoomViewModel
+
+@{
+ViewData["Title"] = "SearchResult";
+}
+
+<h2>Search Available Rooom</h2>
+<div classs="row">
+    <div class="col-md-4">
+        <form asp-action="SearchResult" method="get">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+            </div>
+            <div class="form-group">
+                <label asp-for="DateFrom" class="control-label"></label>
+                <input asp-for="DateFrom" class="form-control">
+                <span asp-validation-for="DateFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTo" class="control-label"></label>
+                <input asp-for="DateTo" class="form-control">
+                <span asp-validation-for="DateTo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NoOfAdults" class="control-label"></label>
+                <input asp-for="NoOfAdults" class="form-control">
+                <span asp-validation-for="NoOfAdults" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NoOfChilds" class="control-label"></label>
+                <input asp-for="NoOfChilds" class="form-control">
+                <span asp-validation-for="NoOfChilds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+            </form>
+    </div>
+</div>
+<form>
+    <input type="hidden" asp-for="DateForm" />
+
+    <input type="hidden" asp-for="DateTo" />
+    <div class="row">
+
+        @if(Model != null)
+        {
+            foreach(var item in Model.Room)
+                {
+                    <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <br /><span>@item.Room_ID</span>
+                            <br /><span>@item.Room_Type</span>
+                            <br /><span>@item.Room_Rate</span>
+                            <br /><span>@item.Room_Status</span>
+                        </td>
+                        <td>
+                            <input type="submit" asp-action="Reservation" class="btn btn-primary" asp-route-id="@item.Reservation_ID">
+                            </td>
+                    </tr>
+                        </table>
+                }
+        }
+        </div>
+</form>

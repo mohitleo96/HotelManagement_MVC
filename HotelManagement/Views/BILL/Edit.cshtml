@@ -1,0 +1,67 @@
+﻿@model HotelManagement.Models.BILL
+
+@{
+    ViewBag.Title = "Edit";
+}
+<font style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:aliceblue;>
+    <h2>Edit</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>BILL</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Billing_Number)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Transaction_Type, ViewBag.payment as SelectList, "--Select_Payment_Mode--")
+                    @Html.ValidationMessageFor(model => model.Transaction_Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Total_Bill, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Total_Bill, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Total_Bill, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Paytime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Paytime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Paytime, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reservation_ID, "Reservation_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Reservation_ID, ViewBag.ResevationID as SelectList, "--Select Receptionist ID--")
+                    @*  @Html.DropDownList("Role_ID", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.ValidationMessageFor(model => model.Reservation_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

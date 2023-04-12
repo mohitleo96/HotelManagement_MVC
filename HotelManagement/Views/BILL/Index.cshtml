@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HotelManagement.Models.BILL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b>  <h2>Bill</h2></b>
+
+
+    <p>
+        @Html.ActionLink("Make_Bill", "Create")
+    </p>
+    <table class="table">
+        <tr style="background-color:cornsilk">
+            <th>
+                @Html.DisplayNameFor(model => model.Billing_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction_Type)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Day)
+                </th>*@
+
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.Reservation_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Bill)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Billing_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transaction_Type)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Day)
+                    </td>*@
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Reservation_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Bill)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Billing_Number }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Billing_Number })
+                </td>
+            </tr>
+        }
+
+    </table>

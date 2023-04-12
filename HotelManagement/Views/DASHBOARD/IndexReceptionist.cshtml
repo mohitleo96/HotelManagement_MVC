@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "IndexReceptionist";
+}
+
+<font style="font-family:'Times New Roman', Times, serif; color:antiquewhite; font-size:larger">
+    <b> <h2>Receptionist</h2></b>
+    @{
+        ViewBag.Title = "IndexReceptionist";
+    }
+
+    @Html.Raw(TempData["LoginSuccessMessage"])
+
+    @Html.Raw(TempData["Request"])
+
+    @Html.Raw(TempData["Reply"])
+
+
+    <h4> Welcome @Session["Staff_name"]</h4>
+    <p>
+        <button> <h3><li>@Html.ActionLink("Guest", "Index", "GUEST")</li></h3></button>
+
+        <button> <h3> <li>@Html.ActionLink("Reservation", "Index", "RESERVATION")</li></h3></button>
+
+        <button> <h3> <li>@Html.ActionLink("Room", "Index", "ROOM")</li></h3></button>
+
+        <button> <h3><li>@Html.ActionLink("Logout", "Index", "Homee")</li></h3></button>
+
+        <button> <h3><li>@Html.ActionLink("BACK", "LogoutReceptionist", "DASHBOARD")</li></h3></button>
+    </p>
+
+   
+
+
+
+
+
+
